@@ -1,0 +1,18 @@
+    <h2><%= post.name %></h2>
+    <p><%= post.content %></p>
+    <% if post.category %>
+        <p>Catégorie : <%= post.category.name %></p>
+    <% end %>
+
+    <% if !post.tags.empty? %>
+        <p>
+            Tags :
+            <%= post.tags.map(&:name).join(', ') %>
+        </p>
+    <% end %>
+
+    <p>
+        <a href="<%= post_path(post.id) %>" class="btn btn-primary">Lire la suite</a>
+        <a href="<%= edit_post_path(post.id) %>" class="btn btn-secondary">Éditer</a>
+        <a href="<%= post_path(post.id) %>" class="btn btn-danger" data-confirm="Êtes-vous sur ?" data-method="DELETE">Supprimer</a>
+    </p>
